@@ -3,7 +3,7 @@
     "name": "FunJunk",
     "icons": [
       {
-        "src": "icon.png",
+        "src": "icon192.png",
         "type": "image/png",
         "sizes": "192x192"
       }
