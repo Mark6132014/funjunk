@@ -45,7 +45,7 @@ header img {
     float: right;
 }
 .intro {
-    background: linear-gradient(to right, rgb(109, 223, 227), rgb(235, 154, 204));
+    background: linear-gradient(40deg, rgb(109, 223, 227), rgb(235, 154, 204));
     height: 100vh;
     width: 100%;
     position: absolute;
@@ -55,6 +55,7 @@ header img {
     justify-content: center;
     align-items: center;
     display: flex;
+    transition: 2s ease-in-out;
 }
 .intro img {
     background: white;
