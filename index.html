@@ -8,16 +8,12 @@
     </title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="icon.png">
-    <style>
-        @keyframes fadeout {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
         }
-    </style>
+        </script>
 </head>
 <body>
     <div class="intro">
