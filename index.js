@@ -5,7 +5,7 @@ function hideOptions() {
 setTimeout(() => {
     document.querySelector(".intro").style.display = "flex";
     document.querySelector(".intro").style.opacity = 0;
-    setTimeout(hideOptions, 3500);
+    setTimeout(hideOptions, 2500);
 }, 3000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
