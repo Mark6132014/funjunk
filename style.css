@@ -1,5 +1,9 @@
+@font-face {
+  font-family: WindowsFont;
+  src: url('Microsoft Font.ttf');
+}
 html, body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "WindowsFont";
     color: white;
     background: linear-gradient(rgb(41, 41, 204), rgb(235, 154, 204));
     margin: 0;
