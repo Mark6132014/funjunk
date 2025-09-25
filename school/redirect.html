@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Loading...
+    </title>
+</head>
+<body>
+    <p>
+        If it is not loading. Please go back to the home page
+    </p>
+    <br>
+    <a href="index.html">Homepage</a>
+    <script>
+        function getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const regex = /([^&=]+)=([^&]*)/g;
+    let m;
+    while (m = regex.exec(queryString)) {
+        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+    return params;
+}
+      function getParam() {
+        const param = getUrlParams();
+        if (location.search) {
+          location.assign("https://mark6132014.github.io/" + param.website);
+        }
+      }
+      getParam();
+    </script>
+</body>
+</html>

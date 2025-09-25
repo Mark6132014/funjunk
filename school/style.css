@@ -1,0 +1,117 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: linear-gradient(rgb(41, 41, 204), black);
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.scrollEnabled {
+    overflow-y: scroll;
+}
+header {
+    margin: 8px;
+    padding: 8px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+}
+header, header .logo {
+    height: 15vh;
+    border-radius: 5px;
+}
+header .logo {
+    width: 25%;
+}
+header .options {
+    height: 100px;
+    width: 100px;
+    float: right;
+    cursor: pointer;
+}
+.reponsive-space {
+    height: 100px;
+    width: 99%;
+}
+.website {
+    width: 54%;
+    background: white;
+    border-radius: 8px;
+    color: black;
+    text-align: left;
+    float: left;
+}
+.website, .website-potrait {
+    margin-bottom: 15px;
+}
+.website img {
+    height: 30vh;
+    width: 100%;
+    border-radius: 8px;
+    background: linear-gradient(transparent, rgba(235, 154, 204, 0.699));
+}
+.website-potrait {
+    width: 44%;
+    background: white;
+    border-radius: 8px;
+    color: black;
+    text-align: left;
+    float: right;
+}
+.website-potrait img {
+    height: 30vh;
+    width: 100%;
+    border-radius: 8px;
+    background: linear-gradient(transparent, rgba(235, 154, 204, 0.699));
+}
+.intro {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: 2s ease-in-out;
+}
+.intro img {
+    background: white;
+    border-radius: 8px;
+    height: 100px;
+    width: 300px;
+}
+.funjunkWelcome {
+    padding: 8px;
+}
+.go {
+    background: rgb(36, 146, 36);
+    color: white;
+    font-weight: 200;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 3px;
+    text-decoration: none;
+    cursor: default;
+}
+.menu {
+    background: black;
+    color: white;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+.menu a {
+    color: white;
+}
+.menu .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2em;
+    cursor: pointer;
+}
