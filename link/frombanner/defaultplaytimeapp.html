@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        FunJunk | Play in FunJunk!
+    </title>
+    <link rel="shortcut icon" class="iconImg" href="../../icon.png">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        html, body {
+            background: linear-gradient(40deg, red, darkred, darkblue, blue);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .scrollEnabled {
+            overflow-y: scroll;
+        }
+        .intro {
+    background: linear-gradient(40deg, red, darkred);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: 2s ease-in-out;
+}
+.intro img {
+    background: white;
+    border-radius: 8px;
+    height: 100px;
+    width: 300px;
+}
+header {
+    margin: 8px;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+}
+header, header .logo {
+    height: 15vh;
+    border-radius: 5px;
+}
+header .logo {
+    width: 25%;
+}
+    </style>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+        </script>
+</head>
+<body>
+    <div class="intro">
+        <div class="container" style="text-align: center;">
+            <img src="https://mark6132014.github.io/funjunk/logo.png">
+            <h2 class="percentage">0%</h2>
+        </div>
+    </div>
+    <header>
+        <a href="https://mark6132014.github.io/funjunk" title="FunJunk">
+        <img src="https://mark6132014.github.io/funjunk/logo.png" class="logo">
+        </a>
+    </header>
+    <hr>
+    <h1>Use FunJunk as your local play time app!</h1>
+    <p>Install the FunJunk app on your device when you get to the homepage (or on this page), to play FunJunk anytime!
+        <br>
+        We update FunJunk lately this year, so more updates = more fun!
+        <br>
+        So what are you waiting for? Install it now!
+    </p>
+    <button id="installButton" style="cursor: pointer; color: white; font-size: 4em; background: green; height: 15vh; width: auto; border-radius: 5px; border: 10px solid darkgreen;">Install App</button>
+    <hr>
+    <h2>Offline? Try to download the offline version of FunJunk here:</h2><br><a href="funjunk.zip"><h3>Download Offline FunJunk now!</h3></a>
+    <hr>
+    <h2>
+        About FunJunk:
+    </h2>
+    <p>FunJunk is owned by Itzgametime Vip, a great developer in HTML, CSS, JavaScript, Lua, Python, Batch, and VBS</p>
+    <br>
+    <a href="https://itzgametimevip.com">Go to Itzgametime Vip's Website!🍕</a>
+    <script>
+        let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+// Listen for the beforeinstallprompt event
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // Prevent automatic prompt
+  deferredPrompt = e; // Save the event for later
+});
+
+// Handle button click
+installButton.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt(); // Show the install prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to install prompt: ${outcome}`);
+    deferredPrompt = null; // Reset the prompt
+    installButton.hidden = true; // Hide the button
+  }
+});
+
+// Optional: Listen for appinstalled event
+window.addEventListener('appinstalled', () => {
+  console.log('PWA was installed');
+});
+
+        function hideOptions() {
+    document.querySelector(".intro").style.display = "none";
+    document.querySelector("html").setAttribute("class", "scrollEnabled");
+}
+var oldPercentage = 0;
+var newPercentage = 0;
+var finish = 100;
+var number = Math.floor(Math.random()*100);
+var percentageUpdater;
+var limit = 10;
+var underPercentage = 0;
+function updatePercentage() {
+    percentageUpdater = setInterval(() => {
+        number = Math.floor(Math.random()*101);
+        if (number >= newPercentage) {
+            newPercentage = number;
+            document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            finished();
+        } else if (newPercentage == finish) {
+            finished();
+        } else {
+            underPercentage += 1;
+            if (underPercentage == limit) {
+                newPercentage += 1;
+                underPercentage = 0;
+                document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            }
+        }
+    }, 150);
+}
+function finishedAction(action) {
+    action();
+}
+function finished() {
+    if (newPercentage == finish) {
+        clearInterval(percentageUpdater);
+        console.log(newPercentage);
+        finishedAction(() => {
+            document.querySelector(".intro").style.display = "flex";
+            document.querySelector(".intro").style.opacity = 0;
+            setTimeout(hideOptions, 2500);
+        });
+    }
+}
+updatePercentage();
+    </script>
+</body>
+</html>

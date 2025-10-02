@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        FunJunk | The Spooky Event
+    </title>
+    <link rel="shortcut icon" class="iconImg" href="https://mark6132014.github.io/funjunk/icon.png">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        html, body {
+            background: linear-gradient(40deg, orange, rgba(176, 111, 6, 1));
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .scrollEnabled {
+            overflow-y: scroll;
+        }
+        .intro {
+    background: linear-gradient(40deg, orange, rgba(176, 111, 6, 1), darkred);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: 2s ease-in-out;
+}
+.intro img {
+    background: white;
+    border-radius: 8px;
+    height: 100px;
+    width: 300px;
+}
+header {
+    margin: 8px;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+}
+header, header .logo {
+    height: 15vh;
+    border-radius: 5px;
+}
+header .logo {
+    width: 25%;
+}
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <div class="container" style="text-align: center;">
+            <img src="https://mark6132014.github.io/funjunk/logo.png">
+            <h2 class="percentage">0%</h2>
+        </div>
+    </div>
+    <header>
+        <a href="https://mark6132014.github.io/funjunk" title="FunJunk">
+        <img src="https://mark6132014.github.io/funjunk/logo.png" class="logo">
+        </a>
+    </header>
+    <hr>
+    <h1>Let's celebrate Halloween!</h1>
+    <p>Halloween is an exciting event! You get the candy from a random doorstep to your neighborhood!
+        <br>
+        There are some fun things you can do in FunJunk in Halloween! You can play on the websites:
+        <br>
+        Catch Me!
+        <br>
+        Halloween! With lots of Fun and Jokes!
+        <br>
+        To use these websites, use the link below:
+        <br>
+        <a href="https://mark6132014.github.io/catchMe/">Catch Me!</a>
+        <br>
+        <a href="https://mark6132014.github.io/halloween/">Halloween Website</a>
+    </p>
+    <hr>
+    <h1>
+        Fun Facts about Halloween:
+    </h1>
+    <p>Did you know that original jack 'o lanterns were not pumpkins?</p>
+    <br>
+    <small>It happened at the beginning of Halloween.</small>
+    <br>
+    <br>
+    <p>Did you know wearing costumes started as a way to avoid ghosts?</p>
+    <br>
+    <small>Yep, a superstition from the beginning of Halloween.</small>
+    <br>
+    <br>
+    <p>Did you know candy corn was invented in the 1880s and was not originally a Halloween candy?</p>
+    <br>
+    <small>And yes, its artificial, candy corn is a classic for Halloween now'a'days.</small>
+    <br>
+    <br>
+    <p>Did you know the average trick-or-treater consumes about 7,000 calories' worth of candy on Halloween?</p>
+    <br>
+    <small>Wow! That's large for a kid to do that!</small>
+    <br>
+    <br>
+    <p>Did you know average americans spend over $12 billion to buy candy and halloween costumes!?</p>
+    <br>
+    <small>That's a large amount of money!</small>
+    <script>
+        function hideOptions() {
+    document.querySelector(".intro").style.display = "none";
+    document.querySelector("html").setAttribute("class", "scrollEnabled");
+}
+var oldPercentage = 0;
+var newPercentage = 0;
+var finish = 100;
+var number = Math.floor(Math.random()*100);
+var percentageUpdater;
+var limit = 10;
+var underPercentage = 0;
+function updatePercentage() {
+    percentageUpdater = setInterval(() => {
+        number = Math.floor(Math.random()*101);
+        if (number >= newPercentage) {
+            newPercentage = number;
+            document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            finished();
+        } else if (newPercentage == finish) {
+            finished();
+        } else {
+            underPercentage += 1;
+            if (underPercentage == limit) {
+                newPercentage += 1;
+                underPercentage = 0;
+                document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            }
+        }
+    }, 150);
+}
+function finishedAction(action) {
+    action();
+}
+function finished() {
+    if (newPercentage == finish) {
+        clearInterval(percentageUpdater);
+        console.log(newPercentage);
+        finishedAction(() => {
+            document.querySelector(".intro").style.display = "flex";
+            document.querySelector(".intro").style.opacity = 0;
+            setTimeout(hideOptions, 2500);
+        });
+    }
+}
+updatePercentage();
+    </script>
+</body>
+</html>

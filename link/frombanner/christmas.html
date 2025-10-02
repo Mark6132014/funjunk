@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        FunJunk | The Christian Event
+    </title>
+    <link rel="shortcut icon" class="iconImg" href="https://mark6132014.github.io/funjunk/icon.png">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        html, body {
+            background: linear-gradient(40deg, rgba(58, 202, 29, 1), darkred);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        .scrollEnabled {
+            overflow-y: scroll;
+        }
+        .intro {
+    background: linear-gradient(40deg, rgba(58, 202, 29, 1), darkred, whitesmoke);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: 2s ease-in-out;
+}
+.intro img {
+    background: white;
+    border-radius: 8px;
+    height: 100px;
+    width: 300px;
+}
+header {
+    margin: 8px;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+}
+header, header .logo {
+    height: 15vh;
+    border-radius: 5px;
+}
+header .logo {
+    width: 25%;
+}
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <div class="container" style="text-align: center;">
+            <img src="https://mark6132014.github.io/funjunk/logo.png">
+            <h2 class="percentage">0%</h2>
+        </div>
+    </div>
+    <header>
+        <a href="https://mark6132014.github.io/funjunk" title="FunJunk">
+        <img src="https://mark6132014.github.io/funjunk/logo.png" class="logo">
+        </a>
+    </header>
+    <hr>
+    <h1>Let's celebrate Christmas!</h1>
+    <p>Christmas is an exciting event! You get the gifts from Santa Claus, and it will be a part of your childhood!
+        <br>
+        There are some fun things you can do in FunJunk in Christmas (and December)! You can play on the websites:
+        <br>
+        Christmas Website
+        <br>
+        Christmas Games | Christmas Website
+        <br>
+        To use these websites, use the link below:
+        <br>
+        <a href="https://mark6132014.github.io/christmas/">Christmas Website</a>
+        <br>
+        <a href="https://mark6132014.github.io/christmas/games/">Christmas Website Games</a>
+    </p>
+    <hr>
+    <h1>
+        Fun Facts about Christmas:
+    </h1>
+    <p>Did you know the first artificial Christmas trees were made from goose feathers in Germany?</p>
+    <br>
+    <small>Are they natural or artifical for the first time?</small>
+    <br>
+    <br>
+    <p>Did you know Jingle Bells was originally a Thanksgiving song?</p>
+    <br>
+    <small>Never knew that 'till now.</small>
+    <br>
+    <br>
+    <p>Did you know Rudolph the Red-Nosed Reindeer was a marketing gimmick? Rudolph is fake!?</p>
+    <br>
+    <small>It's sometimes sad to know the truth. Rudolph is still real but some buisnesses use him as a gimmick.</small>
+    <script>
+        function hideOptions() {
+    document.querySelector(".intro").style.display = "none";
+    document.querySelector("html").setAttribute("class", "scrollEnabled");
+}
+var oldPercentage = 0;
+var newPercentage = 0;
+var finish = 100;
+var number = Math.floor(Math.random()*100);
+var percentageUpdater;
+var limit = 10;
+var underPercentage = 0;
+function updatePercentage() {
+    percentageUpdater = setInterval(() => {
+        number = Math.floor(Math.random()*101);
+        if (number >= newPercentage) {
+            newPercentage = number;
+            document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            finished();
+        } else if (newPercentage == finish) {
+            finished();
+        } else {
+            underPercentage += 1;
+            if (underPercentage == limit) {
+                newPercentage += 1;
+                underPercentage = 0;
+                document.querySelector(".percentage").innerHTML = newPercentage + "%";
+            }
+        }
+    }, 150);
+}
+function finishedAction(action) {
+    action();
+}
+function finished() {
+    if (newPercentage == finish) {
+        clearInterval(percentageUpdater);
+        console.log(newPercentage);
+        finishedAction(() => {
+            document.querySelector(".intro").style.display = "flex";
+            document.querySelector(".intro").style.opacity = 0;
+            setTimeout(hideOptions, 2500);
+        });
+    }
+}
+updatePercentage();
+    </script>
+</body>
+</html>
